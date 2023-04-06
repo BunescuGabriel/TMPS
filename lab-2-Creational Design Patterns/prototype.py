@@ -54,3 +54,15 @@ film_prototype.afisare()
 
 muzica_prototype = MuzicaPrototype()
 muzica_prototype.afisare()
+
+# Acesta definește o clasă prototip care servește drept șablon pentru crearea 
+# altor obiecte prin clonare. În acest caz, clasa ResursaPrototype este
+# clasa prototip, iar clasele CartePrototype, FilmPrototype și MuzicaPrototype 
+# sunt implementări ale acesteia care definesc obiecte specifice pe care le putem clona.
+
+# Metoda clone definită în clasa ResursaPrototype este cea care face posibilă 
+# clonarea obiectelor, utilizând funcția deepcopy din biblioteca copy.
+
+# Astfel, putem crea noi obiecte de tip CartePrototype, FilmPrototype sau 
+# MuzicaPrototype prin clonarea obiectelor existente, astfel evitând construirea 
+# de la zero a fiecărui obiect.

@@ -1,5 +1,6 @@
 
 #  pattern-ului Builder pentru clasa Autor în Python
+#constructor
 
 class AutorBuilder:
     def __init__(self):
@@ -37,6 +38,9 @@ class Autor:
 
     def __str__(self):
         return f"{self.nume} {self.prenume} ({self.nationalitate}, {self.an_nastere})"
+    
+    def get_full_name(self):
+        return f"{self.nume} {self.prenume}"
 
 # autor_builder = AutorBuilder()
 
@@ -50,20 +54,7 @@ class Autor:
 
 
 
-
-# Clasa AutorBuilder este clasa Builder care conține metodele set_XXX() pentru a 
-# seta valorile atributelor obiectului Autor. În constructorul clasei AutorBuilder, 
-# toate atributele sunt inițializate cu valori implicite (de exemplu, string-ul gol pentru nume 
-# și prenume și None pentru naționalitate și anul nașterii).
-
-# Metodele set_XXX() primesc valorile pentru fiecare atribut și le setează în 
-# obiectul AutorBuilder. Aceste metode returnează întotdeauna instanța obiectului 
-# AutorBuilder astfel încât să putem utiliza mai multe metode înlănțuite.
-
-# Metoda build() este metoda care construiește obiectul Autor folosind valorile setate
-# în obiectul AutorBuilder. Această metodă returnează obiectul Autor construit.
-
-# În exemplul de utilizare, am creat un obiect AutorBuilder și am 
-# utilizat metodele set_XXX() pentru a seta valorile pentru fiecare atribut. 
-# După aceea, am apelat metoda build() pentru a construi obiectul Autor și l-am 
-# afișat folosind metoda __str__() a clasei Autor.
+# Clasa AutorBuilder este un builder care ajută la crearea unui obiect de tip Autor prin setarea 
+# valorilor sale de-a lungul a mai multor apeluri de metode, în loc să le setezi într-un singur 
+# apel de constructor. Clasa Autor este clasa principală pe care o vom construi cu ajutorul 
+# AutorBuilder și conține atributele care vor fi setate în timpul procesului de construcție.

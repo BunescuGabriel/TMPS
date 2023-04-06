@@ -30,13 +30,21 @@ class DatabaseConnectionFactory:
         return DatabaseConnectionFactory.__instance
 
 
+# Acesta se referă la o clasă care permite crearea unui singur obiect din ea,
+# cu scopul de a limita numărul de instanțe ale unei clase și a asigura că există 
+# întotdeauna o singură instanță activă a acestei clase.
 
+# În acest caz, clasa DatabaseConnectionFactory este clasa Singleton, 
+# iar metoda get_instance este cea care asigură că este creată o singură 
+# instanță a clasei DatabaseConnection.
 
+# De fiecare dată când se apelează metoda get_instance, se verifică dacă 
+# instanța există deja. Dacă aceasta nu există, se creează o nouă instanță și se 
+# stochează în variabila __instance a clasei DatabaseConnectionFactory. În caz contrar,
+# se returnează instanța existentă.
 
-# Clasa DatabaseConnection are o variabilă statică privată __instance care reține o singură 
-# instanță a conexiunii la baza de date. Atunci când se apelează constructorul,
-# se verifică dacă o instanță există deja și se returnează acea instanță în loc să se creeze una nouă. 
-# Astfel, se asigură că este creată doar o singură conexiune la baza de date.
+# Astfel, se asigură că există întotdeauna o singură conexiune la baza de date, evitând 
+# astfel crearea mai multor conexiuni inutile și neutilizate.
 
 db_connection = DatabaseConnection('mydatabase.db').connection
 cursor = db_connection.cursor()
