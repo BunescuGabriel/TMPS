@@ -4,7 +4,7 @@
 
 from abc import ABC, abstractmethod
 
-from builder import AutorBuilder
+from Structural.builder import AutorBuilder
 
 
 

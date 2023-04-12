@@ -1,5 +1,7 @@
 import copy
-from builder import AutorBuilder
+
+from Structural.builder import AutorBuilder
+
 
 class ResursaPrototype:
     def __init__(self, tip):

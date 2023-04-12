@@ -1,7 +1,7 @@
 
 
 
-from factory import CodUnicDecorator, ReducereDecorator, Resursa, ResursaDecorator, ResursaFactory
+from Structural.factory import CodUnicDecorator, ReducereDecorator, Resursa, ResursaDecorator, ResursaFactory
 
 
 class ProxyResursa(Resursa):
