@@ -46,6 +46,6 @@ class DatabaseConnectionFactory:
 # Astfel, se asigură că există întotdeauna o singură conexiune la baza de date, evitând 
 # astfel crearea mai multor conexiuni inutile și neutilizate.
 
-db_connection = DatabaseConnection('mydatabase.db').connection
-cursor = db_connection.cursor()
+# db_connection = DatabaseConnection('mydatabase.db').connection
+# cursor = db_connection.cursor()
 

@@ -1,8 +1,11 @@
 
 # Utilizarea unui Factory pentru a crea obiecte de tip Carte, Filme sau Muzica în
 # funcție de tipul de resursă pe care îl caută utilizatorii bibliotecii.
-from builder import AutorBuilder
+
 from abc import ABC, abstractmethod
+
+from builder import AutorBuilder
+
 
 
 class Resursa(ABC):

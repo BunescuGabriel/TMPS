@@ -7,7 +7,7 @@ class ResourceAdapter:
 
     def get_title(self):
         return self.resource.titlu
-
+    
     def get_author(self):
         if isinstance(self.resource, CartePrototype):
             return self.resource.autor.get_full_name()

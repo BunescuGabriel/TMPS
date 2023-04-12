@@ -41,17 +41,9 @@ class Autor:
     
     def get_full_name(self):
         return f"{self.nume} {self.prenume}"
-
-# autor_builder = AutorBuilder()
-
-# autor_builder.set_nume(input("Introduceți numele autorului: "))
-# autor_builder.set_prenume(input("Introduceți prenumele autorului: "))
-# autor_builder.set_nationalitate(input("Introduceți naționalitatea autorului: "))
-# autor_builder.set_an_nastere(input("Introduceți anul nașterii autorului: "))
-
-# autor = autor_builder.build()
-# print(autor)
-
+    
+    def modifica_autor(self, autor_nou):
+        self.autor = autor_nou
 
 
 # Clasa AutorBuilder este un builder care ajută la crearea unui obiect de tip Autor prin setarea 

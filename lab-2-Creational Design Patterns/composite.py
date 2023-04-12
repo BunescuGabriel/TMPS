@@ -96,7 +96,5 @@ biblioteca.afisare()
 
 
 
-
-# Pentru a utiliza pattern-ul Composite in codul trimis anterior, vom modifica clasa 
 # ResursaPrototype astfel incat sa devina clasa abstracta Component, clasa CartePrototype, 
 # FilmPrototype si MuzicaPrototype sa devina clase Leaf si clasa Biblioteca sa devina clasa Composite.
