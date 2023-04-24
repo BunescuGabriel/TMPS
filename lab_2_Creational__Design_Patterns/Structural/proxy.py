@@ -1,7 +1,4 @@
-
-
-
-from Structural.factory import CodUnicDecorator, ReducereDecorator, Resursa, ResursaDecorator, ResursaFactory
+from Creational.factory import CodUnicDecorator, ReducereDecorator, Resursa, ResursaDecorator, ResursaFactory
 
 
 class ProxyResursa(Resursa):
@@ -28,9 +25,8 @@ class ProxyResursa(Resursa):
         else:
             print(f"Accesul pentru {utilizator_curent} este restricționat!")
 
-           
-factory = ResursaFactory()
 
+factory = ResursaFactory()
 
 pret = float(input("Introduceti pretul: "))
 carte = ResursaDecorator(factory.creare_resursa("carte"), pret)
@@ -67,7 +63,7 @@ album_proxy.afisare()
 
 
 
-# Pentru a proteja resursele si pentru a impiedica persoanele neautorizate sa 
+# Pentru a proteja resursele si pentru a impiedica persoanele neautorizate sa
 # acceseze anumite produse, putem crea un proxy
 # care sa verifice autorizarea inainte de a permite accesul la resurse.
 

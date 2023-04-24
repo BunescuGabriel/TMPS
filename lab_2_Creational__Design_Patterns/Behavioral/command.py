@@ -1,4 +1,4 @@
-from Structural.prototype import muzica_prototype, carte_prototype, film_prototype
+from Creational.prototype import muzica_prototype, carte_prototype, film_prototype
 
 class ModificaTitluCarteCommand:
     def __init__(self, carte_prototype, titlu_nou):

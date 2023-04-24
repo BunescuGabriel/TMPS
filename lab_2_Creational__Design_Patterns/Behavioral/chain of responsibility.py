@@ -1,4 +1,4 @@
-from Structural.prototype import CartePrototype, FilmPrototype, MuzicaPrototype
+from Creational.prototype import CartePrototype, FilmPrototype, MuzicaPrototype
 
 
 class ValidareTitlu:

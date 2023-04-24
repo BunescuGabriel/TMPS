@@ -1,6 +1,6 @@
 import copy
 
-from Structural.builder import AutorBuilder
+from Creational.builder import AutorBuilder
 
 
 class ResursaPrototype:

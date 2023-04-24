@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
-from Structural.builder import AutorBuilder
+from Creational.builder import AutorBuilder
+
 
 class Component(ABC):
     @abstractmethod
@@ -94,7 +95,5 @@ biblioteca.add(Muzica())
 # informatiile despre toate obiectele adaugate
 biblioteca.afisare()
 
-
-
-# ResursaPrototype astfel incat sa devina clasa abstracta Component, clasa CartePrototype, 
+# ResursaPrototype astfel incat sa devina clasa abstracta Component, clasa CartePrototype,
 # FilmPrototype si MuzicaPrototype sa devina clase Leaf si clasa Biblioteca sa devina clasa Composite.
