@@ -2,7 +2,7 @@ from Creational.singleton import DatabaseConnectionFactory
 
 
 #  pattern-ului Builder pentru clasa Autor în Python
-#constructor
+# constructor
 
 class AutorBuilder:
     def __init__(self):
@@ -39,12 +39,9 @@ class AutorBuilder:
         autor_id = cursor.lastrowid
         return Autor(autor_id, self.nume, self.prenume, self.nationalitate, self.an_nastere)
 
+
 class Autor:
-    # def __init__(self, nume, prenume, nationalitate=None, an_nastere=None):
-    #     self.nume = nume
-    #     self.prenume = prenume
-    #     self.nationalitate = nationalitate
-    #     self.an_nastere = an_nastere
+
     def __init__(self, autor_id, nume, prenume, nationalitate, an_nastere):
         self.autor_id = autor_id
         self.nume = nume
@@ -54,13 +51,12 @@ class Autor:
 
     def __str__(self):
         return f"{self.nume} {self.prenume} ({self.nationalitate}, {self.an_nastere})"
-    
+
     def get_full_name(self):
         return f"{self.nume} {self.prenume}"
 
     def modifica_autor(self, autor_nou):
         self.autor = autor_nou
-
 
 # Clasa AutorBuilder este un builder care ajută la crearea unui obiect de tip Autor prin setarea
 # valorilor sale de-a lungul a mai multor apeluri de metode, în loc să le setezi într-un singur 

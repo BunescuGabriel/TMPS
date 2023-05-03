@@ -1,5 +1,6 @@
 from Creational.prototype import muzica_prototype, carte_prototype, film_prototype
 
+
 class ModificaTitluCarteCommand:
     def __init__(self, carte_prototype, titlu_nou):
         self.carte_prototype = carte_prototype
@@ -10,6 +11,7 @@ class ModificaTitluCarteCommand:
         self.carte_prototype.modifica_titlu(self.titlu_nou)
         print(f"Titlul cărții a fost modificat cu succes! Titlu vechi: '{titlu_vechi}'. Titlu nou: '{self.titlu_nou}'.")
 
+
 class ModificaAutorCarteCommand:
     def __init__(self, carte_prototype, autor_nou):
         self.carte_prototype = carte_prototype
@@ -18,8 +20,10 @@ class ModificaAutorCarteCommand:
     def execute(self):
         autor_vechi = self.carte_prototype.autor
         self.carte_prototype.modifica_autor(self.autor_nou)
-        print(f"Autorul cărții a fost modificat cu succes! Autorul vechi: '{autor_vechi}'. Autorul nou: '{self.autor_nou}'.")
-        
+        print(
+            f"Autorul cărții a fost modificat cu succes! Autorul vechi: '{autor_vechi}'. Autorul nou: '{self.autor_nou}'.")
+
+
 class ModificaTitluFilmCommand:
     def __init__(self, film_prototype, titlu_nou):
         self.film_prototype = film_prototype
@@ -28,7 +32,9 @@ class ModificaTitluFilmCommand:
     def execute(self):
         titlu_vechi = self.film_prototype.titlu
         self.film_prototype.modifica_titlu(self.titlu_nou)
-        print(f"Titlul filmului a fost modificat cu succes! Titlu vechi: '{titlu_vechi}'. Titlu nou: '{self.titlu_nou}'.")
+        print(
+            f"Titlul filmului a fost modificat cu succes! Titlu vechi: '{titlu_vechi}'. Titlu nou: '{self.titlu_nou}'.")
+
 
 class ModificaRegizorFilmCommand:
     def __init__(self, film_prototype, regizor_nou):
@@ -38,7 +44,9 @@ class ModificaRegizorFilmCommand:
     def execute(self):
         regizor_vechi = self.film_prototype.regizor
         self.film_prototype.modifica_regizor(self.regizor_nou)
-        print(f"Regizor filmului a fost modificat cu succes! Regizor vechi: '{regizor_vechi}'. Regizor nou: '{self.regizor_nou}'.")
+        print(
+            f"Regizor filmului a fost modificat cu succes! Regizor vechi: '{regizor_vechi}'. Regizor nou: '{self.regizor_nou}'.")
+
 
 class ModificaTitluMuzicaCommand:
     def __init__(self, muzica_prototype, titlu_nou):
@@ -48,17 +56,20 @@ class ModificaTitluMuzicaCommand:
     def execute(self):
         titlu_vechi = self.muzica_prototype.titlu
         self.muzica_prototype.modifica_titlu(self.titlu_nou)
-        print(f"Titlul albumului muzical a fost modificat cu succes! Titlu vechi: '{titlu_vechi}'. Titlu nou: '{self.titlu_nou}'.")
+        print(
+            f"Titlul albumului muzical a fost modificat cu succes! Titlu vechi: '{titlu_vechi}'. Titlu nou: '{self.titlu_nou}'.")
+
 
 class ModificaArtistMuzicaCommand:
     def __init__(self, muzica_prototype, artist_nou):
         self.muzica_prototype = muzica_prototype
         self.artist_nou = artist_nou
-        
+
     def execute(self):
         artist_vechi = self.muzica_prototype.artist
         self.muzica_prototype.modifica_artist(self.artist_nou)
-        print(f"Artistul albumului muzical a fost modificat cu succes! Artistul vechi: '{artist_vechi}'. Artistul nou: '{self.artist_nou}'.")
+        print(
+            f"Artistul albumului muzical a fost modificat cu succes! Artistul vechi: '{artist_vechi}'. Artistul nou: '{self.artist_nou}'.")
 
 
 # Creăm obiectul de tip comandă și îl executăm
@@ -99,8 +110,7 @@ comanda_modifica_artist_albumul.execute()
 
 muzica_prototype.afisare()
 
-
-#  putem crea o clasă separată pentru fiecare 
+#  putem crea o clasă separată pentru fiecare
 # comandă și să le asociem cu obiectele de tip CartePrototype, FilmPrototype și 
 # MuzicaPrototype. Aceste clase ar trebui să implementeze o metodă de execuție a 
 # comenzii, care să facă modificările corespunzătoare asupra obiectelor prototip 
