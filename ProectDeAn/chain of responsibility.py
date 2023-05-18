@@ -1,4 +1,4 @@
-from factory import ResursaFactory, ResursaDecorator, CodUnicDecorator, ReducereDecorator
+from factory import ResursaFactory, ResursaDecorator, CodUnicDecorator, ReducereDecorator, Observer
 from proxy import ProxyResursa
 
 
@@ -7,8 +7,6 @@ class ValidareTitlu:
         self.succesor = succesor
 
     def valideaza(self, titlu):
-        # Implementați logica de validare pentru titlu
-        # Returnați True dacă titlul este valid sau apelați succesorul pentru a continua validarea
         if len(titlu) >= 8:
             if self.succesor is not None:
                 return self.succesor.valideaza(titlu)
@@ -71,7 +69,7 @@ class ValidareEditura:
     def valideaza(self, editura):
         # Implementați logica de validare pentru editură
         # Returnați True dacă editura este validă sau apelați succesorul pentru a continua validarea
-        if len(editura) >= 8:
+        if len(editura) >= 5:
             if self.succesor is not None:
                 return self.succesor.valideaza(editura)
             else:
@@ -87,7 +85,7 @@ class ValidareAn:
     def valideaza(self, an_aparitie):
         # Implementați logica de validare pentru an
         # Returnați True dacă anul este valid sau apelați succesorul pentru a continua validarea
-        if an_aparitie >= 1955 and an_aparitie <= 2023:  # Modificați condițiile la valorile dorite
+        if an_aparitie >= 1455 and an_aparitie <= 2023:  # Modificați condițiile la valorile dorite
             if self.succesor is not None:
                 return self.succesor.valideaza(an_aparitie)
             else:
@@ -131,56 +129,66 @@ class ValidareChain:
         else:
             print("albumul muzical nu este valid.")
 
-factory = ResursaFactory()
-
-carte = factory.creare_resursa("carte")
-pret = float(input("Introduceti pretul: "))
-carte_pret = ResursaDecorator(carte, pret)
-procentaj_reducere = float(input("Introduceti procentajul de reducere: "))
-carte_cu_reducere = CodUnicDecorator(ReducereDecorator(carte_pret, procentaj_reducere))
-carte_cu_reducere.afisare()
-# Creăm lanțul de responsabilitate pentru carte
-validare_chain_carte = ValidareChain()
-# Validează cartea folosind lanțul de responsabilitate pentru carte
-validare_chain_carte.valideaza_carte(carte)
-
-
-film = factory.creare_resursa("film")
-pret = float(input("Introduceti pretul: "))
-film_pret = ResursaDecorator(film, pret)
-procentaj_reducere = float(input("Introduceti procentajul de reducere: "))
-film_cu_reducere = CodUnicDecorator(ReducereDecorator(film_pret, procentaj_reducere))
-film_cu_reducere.afisare()
-# Creăm lanțul de responsabilitate pentru film
-validare_chain_film = ValidareChain()
-# Validează filmul folosind lanțul de responsabilitate pentru film
-validare_chain_film.valideaza_film(film)
-
-album = factory.creare_resursa("muzica")
-pret = float(input("Introduceti pretul: "))
-album_pret = ResursaDecorator(album, pret)
-procentaj_reducere = float(input("Introduceti procentajul de reducere: "))
-album_cu_reducere = CodUnicDecorator(ReducereDecorator(album_pret, procentaj_reducere))
-album_cu_reducere.afisare()
-# Creăm lanțul de responsabilitate pentru film
-validare_chain_film = ValidareChain()
-# Validează filmul folosind lanțul de responsabilitate pentru film
-validare_chain_film.valideaza_album(album)
 
 
 
-# Lista utilizatorilor autorizați
-utilizatori_autorizati = ["user1", "user2", "user3"]
 
-# Crearea instanțelor de proxy pentru fiecare dintre cele trei resurse
-carte_proxy = ProxyResursa(carte_cu_reducere, utilizatori_autorizati)
-film_proxy = ProxyResursa(film_cu_reducere, utilizatori_autorizati)
-album_proxy = ProxyResursa(album_cu_reducere, utilizatori_autorizati)
 
-# utilizarea resurselor prin intermediul proxy-ului
-carte_proxy.afisare()
-film_proxy.afisare()
-album_proxy.afisare()
+
+
+
+# film = factory.creare_resursa("film")
+# pret = float(input("Introduceti pretul: "))
+# film_pret = ResursaDecorator(film, pret)
+# procentaj_reducere = float(input("Introduceti procentajul de reducere: "))
+# film_cu_reducere = CodUnicDecorator(ReducereDecorator(film_pret, procentaj_reducere))
+# film_cu_reducere.afisare()
+# # Creăm lanțul de responsabilitate pentru film
+# validare_chain_film = ValidareChain()
+# # Validează filmul folosind lanțul de responsabilitate pentru film
+# validare_chain_film.valideaza_film(film)
+# # Crearea obiectului de tip Observer
+# observer = Observer()
+# # Înregistrarea observatorului la obiectul de tip CartePrototype
+# film.register_observer(observer)
+#
+#
+#
+# album = factory.creare_resursa("muzica")
+# pret = float(input("Introduceti pretul: "))
+# album_pret = ResursaDecorator(album, pret)
+# procentaj_reducere = float(input("Introduceti procentajul de reducere: "))
+# album_cu_reducere = CodUnicDecorator(ReducereDecorator(album_pret, procentaj_reducere))
+# album_cu_reducere.afisare()
+# # Creăm lanțul de responsabilitate pentru film
+# validare_chain_film = ValidareChain()
+# # Validează filmul folosind lanțul de responsabilitate pentru film
+# validare_chain_film.valideaza_album(album)
+# # Crearea obiectului de tip Observer
+# observer = Observer()
+# # Înregistrarea observatorului la obiectul de tip CartePrototype
+# album.register_observer(observer)
+
+
+
+
+
+
+
+
+
+
+
+# film_proxy = ProxyResursa(film_cu_reducere, utilizatori_autorizati)
+# album_proxy = ProxyResursa(album_cu_reducere, utilizatori_autorizati)
+# # Afișăm cartea modificată
+# print("Afișare carte modificată:")
+# carte.afisare()
+
+
+
+# film_proxy.afisare()
+# album_proxy.afisare()
 
 
 
