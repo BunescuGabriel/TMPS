@@ -1,4 +1,4 @@
-from Creational.singleton import DatabaseConnectionFactory
+from singleton import DatabaseConnectionFactory
 
 
 #  pattern-ului Builder pentru clasa Autor în Python

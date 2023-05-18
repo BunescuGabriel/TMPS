@@ -143,6 +143,7 @@ class Observer:
 
 carte_prototype = CartePrototype()
 carte_prototype.afisare()
+
 # Crearea obiectului de tip Observer
 observer = Observer()
 # Înregistrarea observatorului la obiectul de tip CartePrototype
