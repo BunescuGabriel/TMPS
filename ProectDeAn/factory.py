@@ -1,6 +1,10 @@
 from abc import ABC, abstractmethod
 
+from faker.generator import random
+
 from builder import AutorBuilder
+from generator_of_observator import fake, nume_generare
+
 
 class Resursa(ABC):
     @abstractmethod
@@ -8,13 +12,40 @@ class Resursa(ABC):
         pass
 
 
-class Carte(Resursa):
+class Carte:
     def __init__(self, titlu, autor, editura):
         self.tip = "carte"
         self.titlu = titlu
         self.autor = autor
-        self.editara = editura
+        self.editura = editura
         self.observers = []
+        self.pret = None
+        self.procentaj_reducere = None
+        self.cod_unic = None
+
+    def set_pret(self, pret):
+        self.pret = pret
+
+    def set_procentaj_reducere(self, procentaj_reducere):
+        self.procentaj_reducere = procentaj_reducere
+
+    def set_cod_unic(self, cod_unic):
+        self.cod_unic = cod_unic
+
+    def afisare(self):
+        print(f"Tip resursa: {self.tip}")
+        print(f"Aceasta este titlul cartii: '{self.titlu}'.")
+        print(f"Scrisă de: '{self.autor}'.")
+        print(f"Editată de: '{self.editura}'. ")
+        print()
+
+        if self.pret is not None:
+            print(f"Pret: {self.pret}")
+        if self.procentaj_reducere is not None:
+            pret_redus = self.pret * (1 - self.procentaj_reducere / 100)
+            print(f"Pret cu reducere de {self.procentaj_reducere}%: {pret_redus:.2f} USD")
+        if self.cod_unic is not None:
+            print(f"Procentaj reducere: {self.cod_unic}")
 
     def modifica_titlu(self, titlu_nou):
         titlu_vechi = self.titlu
@@ -26,17 +57,15 @@ class Carte(Resursa):
         self.autor = autor_nou
         self.notify_observers("Autor", autor_vechi, autor_nou)
 
-    def afisare(self):
-        print(f"Tip resursa: {self.tip}")
-        print(f"Aceasta este cartea '{self.titlu}' scrisă de '{self.autor}' editată de {self.editara}")
-
     def notify_observers(self, attribute, vechi, nou):
         for observer in self.observers:
             observer.update(attribute, self, vechi, nou)
         print(f"Modificarea atributului '{attribute}' a fost notificată observatorilor.")
+        print()
 
     def register_observer(self, observer):
-        nume_observator = input("Introduceți numele observatorului: ")
+        nume_observator = random.choice(nume_generare)  # Generate a random name from nume_generare
+        # nume_observator = input("Introduceți numele observatorului: ")
         observer.nume = nume_observator
         self.observers.append(observer)
         print(f"Observatorul '{nume_observator}' a fost înregistrat cu succes.")
@@ -49,6 +78,18 @@ class Film(Resursa):
         self.autor = regizor
         self.an_aparitie = an_aparitie
         self.observers = []
+        self.pret = None
+        self.procentaj_reducere = None
+        self.cod_unic = None
+
+    def set_pret(self, pret):
+        self.pret = pret
+
+    def set_procentaj_reducere(self, procentaj_reducere):
+        self.procentaj_reducere = procentaj_reducere
+
+    def set_cod_unic(self, cod_unic):
+        self.cod_unic = cod_unic
 
     def modifica_titlu(self, titlu_nou):
         titlu_vechi = self.titlu
@@ -64,16 +105,28 @@ class Film(Resursa):
 
     def afisare(self):
         print(f"Tip resursa: {self.tip}")
-        print(
-            f"Acesta este filmul '{self.titlu}' regizat de '{self.autor}' anul aparitii este {self.an_aparitie}")
+        print(f"Aceasta este titlul filmul: '{self.titlu}'.")
+        print(f"regizat de: '{self.autor}'.")
+        print(f"anul aparitii este: '{self.an_aparitie}'. ")
+        print()
+
+        if self.pret is not None:
+            print(f"Pret: {self.pret}")
+        if self.procentaj_reducere is not None:
+            pret_redus = self.pret * (1 - self.procentaj_reducere / 100)
+            print(f"Pret cu reducere de {self.procentaj_reducere}%: {pret_redus:.2f} USD")
+        if self.cod_unic is not None:
+            print(f"Procentaj reducere: {self.cod_unic}")
 
     def notify_observers(self, attribute, vechi, nou):
         for observer in self.observers:
             observer.update(attribute, self, vechi, nou)
         print(f"Modificarea atributului '{attribute}' a fost notificată observatorilor.")
+        print()
 
     def register_observer(self, observer):
-        nume_observator = input("Introduceți numele observatorului: ")
+        nume_observator = random.choice(nume_generare)  # Generate a random name from nume_generare
+        # nume_observator = input("Introduceți numele observatorului: ")
         observer.nume = nume_observator
         self.observers.append(observer)
         print(f"Observatorul '{nume_observator}' a fost înregistrat cu succes.")
@@ -81,21 +134,44 @@ class Film(Resursa):
 
 class Muzica(Resursa):
     def __init__(self, titlu, artist, an_aparitie):
-        self.tip = "Film"
+        self.tip = "muzica"
         self.titlu = titlu
         self.autor = artist
         self.an_aparitie = an_aparitie
         self.observers = []
+        self.pret = None
+        self.procentaj_reducere = None
+        self.cod_unic = None
+
+    def set_pret(self, pret):
+        self.pret = pret
+
+    def set_procentaj_reducere(self, procentaj_reducere):
+        self.procentaj_reducere = procentaj_reducere
+
+    def set_cod_unic(self, cod_unic):
+        self.cod_unic = cod_unic
 
     def afisare(self):
         print(f"Tip resursa: {self.tip}")
-        print(
-            f"Acesta este un album muzical '{self.titlu}' artistul este  '{self.autor}' anul aparitii este {self.an_aparitie}")
+        print(f"Aceasta este titlul album muzical: '{self.titlu}'.")
+        print(f"artistul este: '{self.autor}'.")
+        print(f"anul aparitii este: '{self.an_aparitie}'. ")
+        print()
+
+        if self.pret is not None:
+            print(f"Pret: {self.pret}")
+        if self.procentaj_reducere is not None:
+            pret_redus = self.pret * (1 - self.procentaj_reducere / 100)
+            print(f"Pret cu reducere de {self.procentaj_reducere}%: {pret_redus:.2f} USD")
+        if self.cod_unic is not None:
+            print(f"Procentaj reducere: {self.cod_unic}")
 
     def notify_observers(self, attribute, vechi, nou):
         for observer in self.observers:
             observer.update(attribute, self, vechi, nou)
         print(f"Modificarea atributului '{attribute}' a fost notificată observatorilor.")
+        print()
 
     def modifica_titlu(self, titlu_nou):
         titlu_vechi = self.titlu
@@ -110,22 +186,24 @@ class Muzica(Resursa):
         print(f"Artistul a fost modificat cu succes. Notificare trimisă observatorilor.")
 
     def register_observer(self, observer):
-        nume_observator = input("Introduceti numele observatorului de film: ")
+        nume_observator = random.choice(nume_generare)  # Generate a random name from nume_generare
+        # nume_observator = input("Introduceți numele observatorului: ")
         observer.nume = nume_observator
         self.observers.append(observer)
-        print(f"Observatorul de film '{nume_observator}' a fost înregistrat cu succes.")
+        print(f"Observatorul '{nume_observator}' a fost înregistrat cu succes.")
 
-class ResursaDecorator(Resursa):
+
+class ResursaDecorator:
     def __init__(self, resursa, pret):
         self.resursa = resursa
         self.pret = pret
 
     def afisare(self):
         self.resursa.afisare()
-        print(f"Pret: {self.pret} USD")
+        # print(f"Pret: {self.pret} USD")
 
 
-class ReducereDecorator(Resursa):
+class ReducereDecorator:
     def __init__(self, resursa, procentaj_reducere):
         self.resursa = resursa
         self.procentaj_reducere = procentaj_reducere
@@ -133,20 +211,21 @@ class ReducereDecorator(Resursa):
     def afisare(self):
         self.resursa.afisare()
         pret_redus = self.resursa.pret * (1 - self.procentaj_reducere / 100)
-        print(f"Pret cu reducere de {self.procentaj_reducere}%: {pret_redus:.2f} USD")
+        # print(f"Pret cu reducere de {self.procentaj_reducere}%: {pret_redus:.2f} USD")
 
 
-class CodUnicDecorator(Resursa):
+class CodUnicDecorator:
     _contor = 0
 
     def __init__(self, resursa):
         self.resursa = resursa
         CodUnicDecorator._contor += 1
         self.cod_unic = f"CodProdus{CodUnicDecorator._contor}"
+        self.tip = type(resursa).__name__
 
     def afisare(self):
         self.resursa.afisare()
-        print(f"Cod unic produs: {self.cod_unic}")
+        # print(f"Cod unic produs: {self.cod_unic}")
 
 
 class ResursaFactory:
@@ -196,4 +275,6 @@ class Observer:
     def update(self, attribute, resource, vechi, nou):
         print(
             f"Observatorul '{self.nume}' a primit o notificare: atributul '{attribute}' al resursei '{resource.tip}' a fost modificat.")
-        print(f"Valoarea veche: '{vechi}'. Valoarea nouă: '{nou}'.")
+        print(f"Valoarea veche: '{vechi}'. "
+              f"Valoarea nouă: '{nou}'.")
+
